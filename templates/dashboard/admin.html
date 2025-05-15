@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Admin Dashboard</h1>
+    
+    <p>Welcome to the admin dashboard, {{ current_user.name }}!</p>
+    
+    <div class="dashboard-card">
+        <h2>Admin Access</h2>
+        <p>This page is accessible only to users with the 'admin' role.</p>
+        <p>Your current roles: {{ current_user.roles|join(', ') }}</p>
+    </div>
+    
+    <div class="dashboard-card">
+        <h2>Admin API Data</h2>
+        <div id="admin-data">Loading admin data...</div>
+    </div>
+    
+    <script>
+        // Fetch admin data from API endpoint
+        fetch('/api/admin-data')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('admin-data').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('admin-data').textContent = 'Error fetching admin data: ' + error.message;
+            });
+    </script>
+    
+    <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}User Dashboard{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>User Dashboard</h1>
+    
+    <p>Welcome to your dashboard, {{ current_user.name }}!</p>
+    
+    <div class="dashboard-card">
+        <h2>User Access</h2>
+        <p>This page is accessible to users with the 'user' role.</p>
+        <p>Your current roles: {{ current_user.roles|join(', ') }}</p>
+    </div>
+    
+    <a href="{{ url_for('index') }}" class="btn">Back to Home</a>
+</div>
+{% endblock %}
