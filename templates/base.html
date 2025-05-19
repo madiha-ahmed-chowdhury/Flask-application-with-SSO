@@ -13,9 +13,9 @@
             <ul>
                 <li><a href="{{ url_for('index') }}">Home</a></li>
                 {% if current_user.is_authenticated %}
-                    <li><a href="{{ url_for('profile') }}">Profile</a></li>
+                    <li><a href="{{ url_for('user_profile') }}">Profile</a></li>
                     {% if 'admin' in current_user.roles %}
-                        <li><a href="{{ url_for('admin_dashboard') }}">Admin</a></li>
+                        <li><a href="{{ url_for('dashboard') }}">Admin</a></li>
                     {% endif %}
                     <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
