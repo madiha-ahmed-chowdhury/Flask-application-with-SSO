@@ -1,2 +1,3 @@
 .env
 AUTHENTIK_SETUP_GUIDE.md
+flask_session/
